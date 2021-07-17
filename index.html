@@ -1,0 +1,59 @@
+<html>
+    <body>
+        <canvas id="folha" width="600" height="500"> </canvas>
+        <script>
+
+            window.onload = function() {
+                setInterval(exectar, 1000/ 30)
+             }
+             var posicaoBolaX = posicaoBolaY = 10;
+             
+
+             function exectar() {
+                 //todo o codigo do jogo
+                
+                var folhaDesenho = document.getElementById("folha");
+                var areaDesenho = folhaDesenho.getContext("2d");
+
+                var larguraCampo = 600;
+                var alturaCampo = 500;
+                var larguraLinha = 15;
+               
+                var alturaRaquete = 50;
+
+                var larguraBola = 10;
+                var diametroBola = 10;
+
+                //campo
+                areaDesenho.fillStyle = '#286047';
+                areaDesenho.fillRect(0, 0, larguraCampo, alturaCampo);
+                
+                // Linha Meio
+                areaDesenho.fillStyle = '#ffffff';
+                areaDesenho.fillRect(larguraCampo/2 - larguraLinha/2, 0, larguraLinha, alturaCampo);
+
+                // Raquete Player 1
+                areaDesenho.fillStyle = '#FF0000';
+                areaDesenho.fillRect(0, 150, larguraLinha, alturaRaquete);
+
+                // Raquete Player 2
+                areaDesenho.fillStyle = '#4B0082';
+                areaDesenho.fillRect(larguraCampo - larguraLinha, 150, larguraLinha, alturaRaquete);
+
+                
+            // Bola
+           
+                areaDesenho.fillStyle = '#000000';
+                areaDesenho.fillRect(posicaoBolaX - diametroBola/2 ,posicaoBolaY - diametroBola/2, diametroBola, diametroBola);
+                
+
+                posicaoBolaX = posicaoBolaX + 1;
+                posicaoBolaY = posicaoBolaY + 1;
+                console.log("tic tac");
+             }
+
+
+
+        </script>
+    </body>
+</html>
