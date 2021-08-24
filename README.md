@@ -1,2 +1,2 @@
-# EstudoJogoJS
-Estudo Criação de jogo em JS
+# Estudos C#
+Estudos C# e JS
