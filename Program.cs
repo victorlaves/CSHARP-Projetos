@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Threading;
 
-namespace Stopwatch
+namespace Calculadora
 {
-    class Program
+    class Calculadora
     {
         static void Main(string[] args)
         {
@@ -12,40 +11,89 @@ namespace Stopwatch
 
         static void Menu()
         {
+            Console.WriteLine("O que deseja fazer ?");
+            Console.WriteLine("1 - Soma");
+            Console.WriteLine("2 - Subtracao");
+            Console.WriteLine("3 - Divisao");
+            Console.WriteLine("4 - Multipliccao");
+            Console.WriteLine("5 - Sair do Programa");
 
-            Console.WriteLine("S = Segundo => 10s = 10 segundos");
-            Console.WriteLine("M = Minuto => 1m = 1 minuto");
-            Console.WriteLine("0 = Sair");
-            Console.WriteLine("Quanto tempo deseja contar ?");
+            Console.WriteLine("====================");
+            Console.WriteLine("Selecione uma opcao: ");
 
-            string data = Console.ReadLine().ToLower();
-            char type = char.Parse(data.Substring(data.Length - 1, 1));
-            int time = int.Parse(data.Substring(0, data.Length - 1));
-            short multiplier = 1;
+            short resultado = short.Parse(Console.ReadLine());
 
-            if (type == 'm')
-                multiplier = 60;
+            switch (resultado)
+            {
+                case 1 : Soma(); break;
+                case 2 : Subtracao(); break;
+                case 3 : Divisao(); break;
+                case 4 : Multiplicacao(); break;
+                case 5: System.Environment.Exit(0); break;
+                default : Menu(); break;
+            }
+        }
+        static void Soma()
+        {
+            Console.WriteLine("Primeiro valor");
+            float v1 = float.Parse(Console.ReadLine());
+            Console.WriteLine("Segundo Valor");
+            float v2 = float.Parse(Console.ReadLine());
+            Console.WriteLine("");
 
-            if (time == 0)
-                System.Environment.Exit(0);
-
-            Start(time * multiplier);
+            float resultado = v1 + v2;
+            Console.WriteLine("O Resultado da soma e " + resultado);
+            Console.ReadKey();
+            Menu();
         }
 
-        static void Start(int time)
+        static void Subtracao()
         {
-            int currentTime = 0;
+            Console.WriteLine("Primeiro Valor: ");
+            float v1 = float.Parse(Console.ReadLine());
 
-            while (currentTime != time)
-            {
-                Console.Clear();
-                currentTime++;
-                Console.WriteLine(currentTime);
-                Thread.Sleep(1000);
-            }
-            Console.Clear();
-            Console.WriteLine("Stopwatch finalizado");
-            Thread.Sleep(2500);
+            Console.WriteLine("Segundo Valor: ");
+            float v2 = float.Parse(Console.ReadLine());
+
+            Console.WriteLine("");
+
+            float resultado = v1 - v2;
+            Console.WriteLine("O resultado da subtracao e " + resultado);
+            Console.ReadKey();
+            Menu();
+
+        }
+
+        static void Divisao()
+        {
+            Console.WriteLine("Primeiro valor");
+            float v1 = float.Parse(Console.ReadLine());
+
+            Console.WriteLine("Segundo valor");
+            float v2 = float.Parse(Console.ReadLine());
+
+            float resultado = v1 / v2;
+
+            Console.WriteLine("O resultado da divisao entre os numeros e de " + resultado);
+
+            Console.ReadKey();
+            Menu();
+
+
+
+        }
+
+        static void Multiplicacao()
+        {
+            Console.WriteLine("Primeiro Valor");
+            float v1 = float.Parse(Console.ReadLine());
+
+            Console.WriteLine("Primeiro Valor");
+            float v2 = float.Parse(Console.ReadLine());
+
+            float resultado = v1 * v2;
+            Console.WriteLine("O valor da multiplicacao e de " + resultado);
+            Console.ReadKey();
             Menu();
         }
     }
